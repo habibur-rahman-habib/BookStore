@@ -14,7 +14,8 @@
 				</h2>
 			</div>
 			<div class="col-4">
-				<img src="/images/myAccount.png" class="img-fluid" style="margin-top: -80px;"/>
+				<img src="/images/myAccount.png" class="img-fluid"
+					style="margin-top: -80px;" />
 			</div>
 
 		</div>
@@ -27,7 +28,7 @@
 				style="z-index: -1; margin-top: 65px;" />
 		</div>
 
-		<div class="row" style="margin-top: 50px">
+		<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
 			<div class="col-9 offset-3">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs">
@@ -44,9 +45,10 @@
 
 				<!-- Tab panels -->
 				<div class="tab-content" id="nav-tabContent">
+				<!-- create account card -->
 					<div class="tab-pane fade show active" id="create-account"
 						role="tabpanel" aria-labelledby="tab-1">
-
+						<!-- start card -->
 						<div class="card" style="border: none;">
 							<div class="card-body"
 								style="background-color: #ededed; margin-top: 20px;">
@@ -58,20 +60,69 @@
 										<p style="color: #828282;">Enter your user name here.</p>
 									</div>
 									<div class="mb-3">
+										<label for="email" class="form-label">* Email Address</label>
+										<input required="required" type="email" class="form-control"
+											id="eamil" name="eamil">
+										<p style="color: #828282;">A valid email address. All
+											email's from the system will be sent to this address. The
+											email address is not made public and will be used if you wish
+											to received certain notification.</p>
+									</div>
+									<button type="submit" class="btn btn-primary">Create
+										new account</button>
+								</form>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
+					
+					<!-- login card -->
+					<div class="tab-pane fade" id="log-in" role="tabpanel"
+						aria-labelledby="tab-2">
+						<!-- start card -->
+						<div class="card" style="border: none;">
+							<div class="card-body"
+								style="background-color: #ededed; margin-top: 20px;">
+								<form>
+									<div class="mb-3">
 										<label for="newUsername" class="form-label">* User
 											name</label> <input required="required" type="text"
 											class="form-control" id="newUsername" name="username">
 										<p style="color: #828282;">Enter your user name here.</p>
 									</div>
+									<div class="mb-3">
+										<label for="password" class="form-label">* Password</label>
+										<input required="required" type="password" class="form-control"
+											id="password" name="password">
+										<p style="color: #828282;">Enter the password that accompanies your user name</p>
+									</div>
+									<button type="submit" class="btn btn-primary">Log in</button>
 								</form>
 							</div>
 						</div>
-
+						<!-- end card -->
 					</div>
-					<div class="tab-pane fade" id="log-in" role="tabpanel"
-						aria-labelledby="tab-2">Tab 2</div>
+					<!-- forget password card -->
 					<div class="tab-pane fade" id="forget-password" role="tabpanel"
-						aria-labelledby="tab-3">Tab 3</div>
+						aria-labelledby="tab-3">
+						<!-- start card -->
+						<div class="card" style="border: none;">
+							<div class="card-body"
+								style="background-color: #ededed; margin-top: 20px;">
+								<form>
+									<div class="mb-3">
+										<label for="recoverEmail" class="form-label">* Your
+											email</label> <input required="required" type="email"
+											class="form-control" id="recoverEmail" name="email">
+										<p style="color: #828282;">Enter your registered email address here.</p>
+									</div>
+		
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+						<!-- end card -->
+					</div>
 				</div>
 				<!-- End of tab panels -->
 			</div>
