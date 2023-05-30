@@ -1,5 +1,5 @@
 body {
-	
+ 
 }
 
 hr {
@@ -13,45 +13,44 @@ hr {
 	width: 90%;
 }
 
-.img-fluid {
-	max-width: 90%;
+.page-top {
+	margin-top: -70px;
 }
 
 .navbar {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .box {
 	border: 1px solid red;
 }
 
-.home-headline {
-	font-family: 'Times New Roman', Times, senrif;
-	font-size: 24px;
+.home-headline{
+	font-family: 'Times New Roman', Times, serif;
+	font-size:24px;
 	color: #fff;
 	margin: auto;
 	text-align: center;
-	margin-top: 13px;
-	margin-bottom: 10px;
+	margin-top: -13px;
 }
 
 .home-headline span {
 	background-color: #231F20;
-	padding: 5px 22px;
+    padding: 5px 22px;
+	
 }
 
 .section-headline {
-	font-family: 'Times New Roman', Times, senrif;
-	font-size: 24px;
+	font-family: 'Times New Roman', Times, serif;
+	font-size:24px;
 	color: #fff;
 	margin: auto;
 	text-align: center;
-	margin-top: 70px;
+	margin-top: 90px;
 }
 
 .section-headline span {
-	background-color: #231f20;
-	padding: 5px 22px;
+	background-color: #231F20;
+    padding: 5px 22px;
+	
 }
-
-

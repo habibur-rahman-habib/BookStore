@@ -1,17 +1,21 @@
 package com.bookstore.config;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.bookstore.service.impl.UserSecurityService;
+import com.bookstore.utility.SecurityUtility;
 
 @Configuration
 @EnableWebSecurity
@@ -27,11 +31,24 @@ public class SecurityConfig {
 		return SecurityUtility.passwordEncoder();
 	}
 
-	private static final String[] PUBLIC_MATCHERS = { "/css/**", "/js/**", "/image/**", "/", "/myAccount" };
-
+	private static final String[] PUBLIC_MATCHERS = { 
+			"/css/**", 
+			"/js/**", 
+			"/image/**", 
+			"/", 
+			"/newUser" ,
+			"/forgetPassword"};
+	
+	@Bean
 	SecurityFilterChain configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
-				.httpBasic(Customizer.withDefaults());
+		http.authorizeHttpRequests(authorize -> authorize.requestMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated());
+
+        http
+                .csrf(c -> {c.disable();}).cors(cor -> {cor.disable();})
+                .formLogin(login -> login.failureUrl("/login?error").defaultSuccessUrl("/")
+                        .loginPage("/login").permitAll())
+                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
+                .rememberMe(withDefaults());
 		
 		return http.build();
 	}
