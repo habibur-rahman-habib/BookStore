@@ -1,7 +1,5 @@
 package com.bookstore.config;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,23 +30,28 @@ public class SecurityConfig {
 	}
 
 	private static final String[] PUBLIC_MATCHERS = { 
-			"/css/**", 
-			"/js/**", 
-			"/image/**", 
-			"/", 
-			"/newUser" ,
-			"/forgetPassword"};
+			"/css/**",
+			"/js/**",
+			"/image/**",
+			"/",
+			"/newUser",
+			"/forgetPassword",
+			"/login",
+			"/fonts/**",
+			"/bookshelf",
+			"/bookDetail/**"
+	};
 	
 	@Bean
-	SecurityFilterChain configure(HttpSecurity http) throws Exception {
+	SecurityFilterChain configure(HttpSecurity http) throws Exception  {
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated());
 
         http
                 .csrf(c -> {c.disable();}).cors(cor -> {cor.disable();})
                 .formLogin(login -> login.failureUrl("/login?error").defaultSuccessUrl("/")
-                        .loginPage("/login").permitAll())
+                        .loginPage("/login").defaultSuccessUrl("/").permitAll())
                 .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")))
-                .rememberMe(withDefaults());
+                .rememberMe((remember) -> PUBLIC_MATCHERS.toString());
 		
 		return http.build();
 	}

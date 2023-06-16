@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
-<head th:replace="~{common/header :: common-header}"/>
+<head th:replace="~{common/header :: common-header}" />
 
 <body>
-	<div th:replace="~{common/header :: navbar}" ></div>
+	<div th:replace="~{common/header :: navbar}"></div>
 
 	<div class="container">
 		<div class="row" style="margin-bottom: -100px;">
@@ -18,9 +18,8 @@
 			</div>
 		</div>
 		<hr
-			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -80px;" />
-		<img class="img-responsive" src="/image/wood.png"
-			style="margin-top: -75px;" />
+			style="position: absolute; width: 90%; height: 6px; background-color: #333; z-index: -1; margin-top: -20px;" />
+		<img class="img-responsive" src="/image/wood.png" />
 
 		<div class="row" style="margin-top: 60px;">
 			<div class="col-xs-9 col-xs-offset-3">
@@ -90,7 +89,8 @@
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-top: 20px;">
-									<div th:if="${param.error != null}" style="color:red;">Incorrect username or password.</div>
+									<div th:if="${param.error != null}" style="color: red;">Incorrect
+										username or password.</div>
 									<form th:action="@{/login}" method="post">
 										<div class="form-group">
 											<label for="username">* Username: </label> <input
@@ -121,8 +121,10 @@
 							<div class="panel panel-default" style="border: none;">
 								<div class="panel-body"
 									style="background-color: #ededed; margin-top: 20px;">
-									<div th:if="${emailNotExist}" class="alert alert-danger">Email doesn't exist.</div>
-									<div th:if="${forgetPasswordEmailSent}" class="alert alert-success">Email sent.</div>
+									<div th:if="${emailNotExist}" class="alert alert-danger">Email
+										doesn't exist.</div>
+									<div th:if="${forgetPasswordEmailSent}"
+										class="alert alert-success">Email sent.</div>
 									<form th:action="@{/forgetPassword}" method="post">
 										<div class="form-group">
 											<label for="recoverEmail">* Your Email: </label> <input
