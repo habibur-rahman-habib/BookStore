@@ -11,7 +11,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class UserPayment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -25,7 +25,7 @@ public class UserPayment {
 	private boolean defaultPayment;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
@@ -118,8 +118,6 @@ public class UserPayment {
 	public void setUserBilling(UserBilling userBilling) {
 		this.userBilling = userBilling;
 	}
-	
-	
 	
 	
 }

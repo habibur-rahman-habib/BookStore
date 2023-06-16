@@ -9,11 +9,10 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class UserBilling {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String userBillingName;
 	private String userBillingStreet1;
 	private String userBillingStreet2;
@@ -22,7 +21,7 @@ public class UserBilling {
 	private String userBillingCountry;
 	private String userBillingZipcode;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	private UserPayment userPayment;
 
 	public Long getId() {
