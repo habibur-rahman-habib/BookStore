@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.bookstore.domain.security.Authority;
+import com.bookstore.domain.security.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,13 +20,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.bookstore.domain.security.Authority;
-import com.bookstore.domain.security.UserRole;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User implements UserDetails{
@@ -38,6 +39,8 @@ public class User implements UserDetails{
 	private String phone;
 	private boolean enabled=true;
 	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+	private ShoppingCart shoppingCart;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserShipping> userShippingList;
@@ -143,6 +146,12 @@ public class User implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return enabled;
+	}
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
 	
 	

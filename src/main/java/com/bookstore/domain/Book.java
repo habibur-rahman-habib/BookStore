@@ -1,12 +1,17 @@
 package com.bookstore.domain;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -35,6 +40,12 @@ public class Book {
 	
 	@Transient
 	private MultipartFile bookImage;
+	
+	@OneToMany(mappedBy="book")
+	@JsonIgnore
+	private List<BookToCartItem> bookToCartItemList;
+	
+	
 
 	public Long getId() {
 		return id;
@@ -170,6 +181,14 @@ public class Book {
 
 	public void setBookImage(MultipartFile bookImage) {
 		this.bookImage = bookImage;
+	}
+
+	public List<BookToCartItem> getBookToCartItemList() {
+		return bookToCartItemList;
+	}
+
+	public void setBookToCartItemList(List<BookToCartItem> bookToCartItemList) {
+		this.bookToCartItemList = bookToCartItemList;
 	}
 	
 	

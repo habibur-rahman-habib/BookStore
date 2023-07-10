@@ -23,10 +23,10 @@ public interface UserService {
 	User save(User user);
 	
 	void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user);
-
+	
 	void updateUserShipping(UserShipping userShipping, User user);
 	
-	void setUserDefaultPayment(Long defaultPaymentId, User user);
-
-	void setUserDefaultShipping(Long defaultShippingId, User user);
+	void setUserDefaultPayment(Long userPaymentId, User user);
+	
+	void setUserDefaultShipping(Long userShippingId, User user);
 }

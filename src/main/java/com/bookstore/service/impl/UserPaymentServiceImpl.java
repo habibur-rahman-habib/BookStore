@@ -20,5 +20,4 @@ public class UserPaymentServiceImpl implements UserPaymentService{
 	public void removeById(Long id) {
 		userPaymentRepository.deleteById(id);
 	}
-	
 } 
