@@ -63,21 +63,29 @@
 						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
 							<hr />
 							<div class="col-xs-2">
-								<a th:href="@{bookDetail(id=${cartItem.book.id})}"> <img
-									class="img-responsive shelf-book"
+								<a th:href="@{/bookDetail(id=${cartItem.book.id})}"> <img
+									style="width: 70px;"
+									class="img-responsive shelf-book center-block"
 									th:src="#{adminPath}+@{/image/book/}+
 								${cartItem.book.id}+'.png'" />
 								</a>
-								<p th:if="${cartItem.book.inStockNumber&gt;10}"
-									style="color: green;">In Stock</p>
-								<p
-									th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
-									style="color: green;">
-									Only <span th:text="${cartItem.book.inStockNumber}"></span>In
-									Stock
-								</p>
-								<p th:if="${cartItem.book.inStockNumber==0}"
-									style="color: darkred;">Product Unavailable</p>
+							</div>
+							<div class="col-xs-6">
+								<div style="margin-left: 50px;">
+									<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4
+											th:text="${cartItem.book.title}"></h4></a>
+									<p th:if="${cartItem.book.inStockNumber&gt;10}"
+										style="color: green;">In Stock</p>
+									<p
+										th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
+										style="color: green;">
+										Only <span th:text="${cartItem.book.inStockNumber}"></span> In
+										Stock
+									</p>
+									<p th:if="${cartItem.book.inStockNumber==0}"
+										style="color: darkred;">Product Unavailable</p>
+									<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+								</div>
 							</div>
 
 							<div class="col-xs-2">
