@@ -17,4 +17,6 @@ List<CartItem> findByShoppingCart(ShoppingCart shoppingCart);
 	CartItem findById(Long id);
 	
 	void removeCartItem(CartItem cartItem);
+	
+	CartItem save(CartItem cartItem);
 }

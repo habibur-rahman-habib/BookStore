@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ShippingAddress {
@@ -21,9 +20,8 @@ public class ShippingAddress {
 	private String ShippingAddressZipcode;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@OneToOne
+	private Order order;
 
 
 	public Long getId() {
@@ -106,16 +104,13 @@ public class ShippingAddress {
 	}
 
 
-	public User getUser() {
-		return user;
+	public Order getOrder() {
+		return order;
 	}
 
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-
-
-	
 
 }
